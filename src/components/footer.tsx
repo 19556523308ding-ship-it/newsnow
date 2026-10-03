@@ -1,11 +1,11 @@
 export function Footer() {
   return (
     <>
-      <a href={`${Homepage}/blob/main/LICENSE`} target="_blank">MIT LICENSE</a>
+      <a href="https://news.jinzhai.icu" target="_blank">NEWS.JINZHAI.ICU</a>
       <span>
-        <span>NewsNow © 2024 By </span>
-        <a href={Author.url} target="_blank">
-          {Author.name}
+        <span>NewsNow © 2026 By </span>
+        <a href="https://news.jinzhai.icu" target="_blank">
+          丁东政
         </a>
       </span>
     </>
