@@ -51,19 +51,21 @@ export const defaultOrderedSources: SourceID[] = [
   "bilibili-hot-search",
   "qqvideo",
 
-  // 4、经济类（财联社、雪球、金十数据、格隆汇、法布财经等）
+  // 4、经济类（6个，正好填满两排）
   "cls-telegraph",
   "xueqiu-hotstock",
   "jin10",
   "gelonghui",
   "fastbull-express",
+  "mktnews-flash",
 
-  // 5、英文/国际类（Hacker News、GitHub、V2EX最新、Product Hunt、联合早报等）
+  // 5、英文/国际类（6个，正好填满两排）
   "hackernews",
   "github-trending-today",
   "v2ex-share",
   "producthunt",
   "zaobao",
+  "solidot",
 ]
 
 export const fixedColumnIds = ["focus", "hottest", "realtime", "updated"] as const satisfies Partial<ColumnID>[]
