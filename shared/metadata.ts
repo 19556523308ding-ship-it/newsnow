@@ -35,6 +35,37 @@ export const columns = {
 
 const updatedSourceIds = [..._updatedSourceIds] as SourceID[]
 
+export const defaultOrderedSources: SourceID[] = [
+  // 1、知乎、微博、华尔街见闻
+  "zhihu",
+  "weibo",
+  "wallstreetcn-hot",
+
+  // 2、百度热搜、今日头条、腾讯新闻
+  "baidu",
+  "toutiao",
+  "tencent",
+
+  // 3、抖音、哔哩哔哩、腾讯视频
+  "douyin",
+  "bilibili-hot-search",
+  "qqvideo",
+
+  // 4、经济类（财联社、雪球、金十数据、格隆汇、法布财经等）
+  "cls-telegraph",
+  "xueqiu-hotstock",
+  "jin10",
+  "gelonghui",
+  "fastbull-express",
+
+  // 5、英文/国际类（Hacker News、GitHub、V2EX最新、Product Hunt、联合早报等）
+  "hackernews",
+  "github-trending-today",
+  "v2ex-share",
+  "producthunt",
+  "zaobao",
+]
+
 export const fixedColumnIds = ["focus", "hottest", "realtime", "updated"] as const satisfies Partial<ColumnID>[]
 export const hiddenColumns = Object.keys(columns).filter(id => !fixedColumnIds.includes(id as any)) as HiddenColumnID[]
 
@@ -45,17 +76,22 @@ function getSortedSourceIds(type: "hottest" | "realtime") {
     .sort((m, n) => m.localeCompare(n))
 }
 
+function getHottestSourceIds() {
+  const otherHottest = getSortedSourceIds("hottest").filter(id => !defaultOrderedSources.includes(id))
+  return [...defaultOrderedSources, ...otherHottest]
+}
+
 export const metadata: Metadata = typeSafeObjectFromEntries(typeSafeObjectEntries(columns).map(([k, v]) => {
   switch (k) {
     case "focus":
       return [k, {
         name: v.zh,
-        sources: [] as SourceID[],
+        sources: [...defaultOrderedSources],
       }]
     case "hottest":
       return [k, {
         name: v.zh,
-        sources: getSortedSourceIds("hottest"),
+        sources: getHottestSourceIds(),
       }]
     case "realtime":
       return [k, {
