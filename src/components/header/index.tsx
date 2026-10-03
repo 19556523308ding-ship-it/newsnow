@@ -49,14 +49,15 @@ export function Header() {
   return (
     <>
       <span className="flex justify-self-start">
-        <Link to="/" className="flex gap-2 items-center">
-          <div className="h-10 w-10 bg-cover" title="logo" style={{ backgroundImage: "url(/icon.svg)" }} />
-          <span className="text-2xl font-brand line-height-none!">
-            <p>News</p>
-            <p className="mt--1">
-              <span className="color-primary-6">N</span>
-              <span>ow</span>
-            </p>
+        <Link to="/" className="flex gap-2.5 items-center group">
+          <div className="h-10 w-10 bg-cover rounded-xl shadow-sm transition-transform duration-300 group-hover:scale-105" title="新闻早知道" style={{ backgroundImage: "url(/icon.svg)" }} />
+          <span className="flex flex-col justify-center select-none">
+            <span className="text-xl font-bold tracking-wider leading-tight text-neutral-800 dark:text-neutral-100 font-sans group-hover:text-primary transition-colors">
+              新闻早知道
+            </span>
+            <span className="text-[10px] uppercase font-mono tracking-widest text-primary-600 dark:text-primary-400 font-semibold opacity-90 leading-none mt-0.5">
+              NEWS NOW
+            </span>
           </span>
         </Link>
       </span>
