@@ -48,28 +48,21 @@ function Refresh() {
 export function Header() {
   return (
     <>
-      <span className="flex justify-self-start">
-        <Link to="/" className="flex gap-2.5 items-center group">
-          <div className="h-10 w-10 bg-cover rounded-xl shadow-sm transition-transform duration-300 group-hover:scale-105" title="新闻早知道" style={{ backgroundImage: "url(/icon.svg)" }} />
-          <span className="flex flex-col justify-center select-none">
-            <span className="text-xl font-bold tracking-wider leading-tight text-neutral-800 dark:text-neutral-100 font-sans group-hover:text-primary transition-colors">
-              新闻早知道
-            </span>
-            <span className="text-[10px] uppercase font-mono tracking-widest text-primary-600 dark:text-primary-400 font-semibold opacity-90 leading-none mt-0.5">
-              NEWS NOW
-            </span>
+      <div className="flex items-center">
+        <Link to="/" className="flex items-center gap-3 group select-none">
+          <div className="h-10 w-10 flex-shrink-0 bg-cover rounded-xl shadow-sm transition-transform duration-300 group-hover:scale-105" title="新闻早知道" style={{ backgroundImage: "url(/icon.svg)" }} />
+          <span className="text-xl md:text-2xl font-bold tracking-wider whitespace-nowrap text-neutral-800 dark:text-neutral-100 group-hover:text-primary transition-colors font-sans">
+            新闻早知道
           </span>
         </Link>
-      </span>
-      <span className="justify-self-center">
-        <span className="hidden md:(inline-block)">
-          <NavBar />
-        </span>
-      </span>
-      <span className="justify-self-end flex gap-2 items-center text-xl text-primary-600 dark:text-primary">
+      </div>
+      <div className="hidden md:flex justify-center flex-1 mx-4">
+        <NavBar />
+      </div>
+      <div className="flex items-center gap-3 text-xl text-primary-600 dark:text-primary">
         <GoTop />
         <Refresh />
-      </span>
+      </div>
     </>
   )
 }
