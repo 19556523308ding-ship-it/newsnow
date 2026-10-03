@@ -4,6 +4,49 @@ import type { SourceID } from "@shared/types"
 import { NavBar } from "../navbar"
 import { Menu } from "./menu"
 import { currentSourcesAtom, goToTopAtom } from "~/atoms"
+import { useToast } from "~/hooks/useToast"
+
+function Bookmark() {
+  const toast = useToast()
+
+  const handleBookmark = useCallback(() => {
+    const title = document.title || "新闻早知道 - 实时热点聚合"
+    const url = window.location.href
+
+    // 尝试调用浏览器原生收藏或通用快捷键提醒
+    try {
+      if ((window as any).external && "AddFavorite" in (window as any).external) {
+        (window as any).external.AddFavorite(url, title)
+        return
+      }
+    } catch {
+      // 忽略失败，向下执行
+    }
+
+    const isMac = navigator.userAgent.toLowerCase().includes("mac")
+    const shortcut = isMac ? "⌘ + D" : "Ctrl + D"
+
+    // 复制当前网址到剪贴板作为备用贴心体验
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).catch(() => {})
+    }
+
+    toast(`请按 ${shortcut} 将本站加入书签收藏夹！`, {
+      type: "success",
+      duration: 4000,
+    })
+  }, [toast])
+
+  return (
+    <button
+      type="button"
+      title="收藏本站 (Ctrl+D)"
+      aria-label="收藏本站"
+      className="i-ph:bookmark-simple-duotone btn hover:scale-110 active:scale-95 transition-all text-xl"
+      onClick={handleBookmark}
+    />
+  )
+}
 
 function GoTop() {
   const { ok, fn: goToTop } = useAtomValue(goToTopAtom)
@@ -60,6 +103,7 @@ export function Header() {
         <NavBar />
       </div>
       <div className="flex items-center gap-3 text-xl text-primary-600 dark:text-primary">
+        <Bookmark />
         <GoTop />
         <Refresh />
       </div>
