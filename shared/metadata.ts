@@ -36,36 +36,40 @@ export const columns = {
 const updatedSourceIds = [..._updatedSourceIds] as SourceID[]
 
 export const defaultOrderedSources: SourceID[] = [
-  // 1、知乎、微博、华尔街见闻
+  // 1、知乎、微博、华尔街见闻（纯中文热搜）
   "zhihu",
   "weibo",
   "wallstreetcn-hot",
 
-  // 2、百度热搜、今日头条、腾讯新闻
+  // 2、百度热搜、今日头条、腾讯新闻（纯中文综合）
   "baidu",
   "toutiao",
   "tencent",
 
-  // 3、抖音、哔哩哔哩、腾讯视频
+  // 3、抖音、哔哩哔哩、腾讯视频（纯中文视频娱乐）
   "douyin",
   "bilibili-hot-search",
   "qqvideo",
 
-  // 4、经济类（6个，正好填满两排）
+  // 4、经济类 A（纯中文经济热点）：财联社、雪球、金十数据
   "cls-telegraph",
   "xueqiu-hotstock",
   "jin10",
+
+  // 5、经济类 B（纯中文经济深度）：格隆汇、法布财经、财联社热门
   "gelonghui",
   "fastbull-express",
-  "mktnews-flash",
+  "cls-hot",
 
-  // 5、英文/国际类（6个，正好填满两排）
+  // 6、中文国际/主流媒体（纯中文）：联合早报、参考消息、卫星通讯社
+  "zaobao",
+  "cankaoxiaoxi",
+  "sputniknewscn",
+
+  // 7、英文类（纯英文科技/资讯）：Hacker News、GitHub、Product Hunt
   "hackernews",
   "github-trending-today",
-  "v2ex-share",
   "producthunt",
-  "zaobao",
-  "solidot",
 ]
 
 export const fixedColumnIds = ["focus", "hottest", "realtime", "updated"] as const satisfies Partial<ColumnID>[]
