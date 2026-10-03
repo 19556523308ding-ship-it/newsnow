@@ -36,10 +36,10 @@ export const columns = {
 const updatedSourceIds = [..._updatedSourceIds] as SourceID[]
 
 export const defaultOrderedSources: SourceID[] = [
-  // 1、知乎、微博、华尔街见闻（纯中文热搜）
+  // 1、知乎、微博、参考消息（纯中文主流热点）
   "zhihu",
   "weibo",
-  "wallstreetcn-hot",
+  "cankaoxiaoxi",
 
   // 2、百度热搜、今日头条、腾讯新闻（纯中文综合）
   "baidu",
@@ -61,9 +61,9 @@ export const defaultOrderedSources: SourceID[] = [
   "fastbull-express",
   "cls-hot",
 
-  // 6、中文国际/主流媒体（纯中文）：联合早报、参考消息、卫星通讯社
+  // 6、中文媒体与财经热点：联合早报、华尔街见闻、卫星通讯社
   "zaobao",
-  "cankaoxiaoxi",
+  "wallstreetcn-hot",
   "sputniknewscn",
 
   // 7、英文类（纯英文科技/资讯）：Hacker News、GitHub、Product Hunt
